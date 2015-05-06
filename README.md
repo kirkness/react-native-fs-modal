@@ -8,7 +8,7 @@ React native full screen modal component.
 
 ### Usage
 
-_NOTE:_** If you are using the native status bar you will need to combine this plugin with the [react-native-overlay plugin](https://github.com/brentvatne/react-native-overlay)
+**_NOTE:_** If you are using the native status bar you will need to combine this plugin with the [react-native-overlay plugin](https://github.com/brentvatne/react-native-overlay)
 
 ##### Using ref
 
