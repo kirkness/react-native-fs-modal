@@ -1,0 +1,32 @@
+{
+  "name": "react-native-fs-modal",
+  "version": "0.1.0",
+  "description": "React native full screen modal component.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kirkness/react-native-fs-modal.git"
+  },
+  "keywords": [
+    "React-native",
+    "react",
+    "native",
+    "component",
+    "modal",
+    "full-screen",
+    "animation",
+    "tween"
+  ],
+  "author": "Henry Kirkness",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kirkness/react-native-fs-modal/issues"
+  },
+  "homepage": "https://github.com/kirkness/react-native-fs-modal",
+  "dependencies": {
+    "react-native-tween-animation": "^1.0.1"
+  }
+}
