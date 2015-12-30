@@ -9,8 +9,8 @@ var {
   View,
   Component,
   TouchableWithoutFeedback,
-  StatusBarIOS
 } = React;
+import utils from './urils';
 
 class Modal extends Component {
 
@@ -75,7 +75,7 @@ class Modal extends Component {
 
   show () {
     if(this.props.hideStatusBar !== false)
-      StatusBarIOS.setHidden(true, StatusBarIOS.Animation['slide']);
+      utils.setHidden(true);
     this._showModalWrapper();
     this.underlayTween = new Tween({
       start: {
@@ -97,7 +97,7 @@ class Modal extends Component {
 
   close () {
     if(this.props.hideStatusBar !== false)
-      StatusBarIOS.setHidden(false, StatusBarIOS.Animation['slide']);
+      utils.setHidden(false);
     this.modalTween.reverse(() => {});
     this.underlayTween.reverse(() => {
       this._hideModalWrapper();
