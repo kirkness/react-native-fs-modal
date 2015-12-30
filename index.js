@@ -5,12 +5,12 @@ var deviceScreen = require('Dimensions').get('window');
 var Tween = require('react-native-tween-animation');
 
 var {
-  StyleSheet,
-  View,
-  Component,
-  TouchableWithoutFeedback,
-  StatusBarIOS
-} = React;
+    StyleSheet,
+    View,
+    Component,
+    TouchableWithoutFeedback,
+    } = React;
+import utils from './utils';
 
 class Modal extends Component {
 
@@ -62,10 +62,10 @@ class Modal extends Component {
         top: 20,
       },
       duration: (this.props.hasOwnProperty('duration')) ? (
-        this.props.duration
+          this.props.duration
       ) : 500,
       tween: (this.props.hasOwnProperty('tween')) ? (
-        this.props.tween
+          this.props.tween
       ) : 'easeOutBack',
       frame: (tweenFrame) => this.setState({
         modal: tweenFrame
@@ -75,7 +75,7 @@ class Modal extends Component {
 
   show () {
     if(this.props.hideStatusBar !== false)
-      StatusBarIOS.setHidden(true, StatusBarIOS.Animation['slide']);
+      utils.setHidden(true);
     this._showModalWrapper();
     this.underlayTween = new Tween({
       start: {
@@ -97,7 +97,7 @@ class Modal extends Component {
 
   close () {
     if(this.props.hideStatusBar !== false)
-      StatusBarIOS.setHidden(false, StatusBarIOS.Animation['slide']);
+      utils.setHidden(false);
     this.modalTween.reverse(() => {});
     this.underlayTween.reverse(() => {
       this._hideModalWrapper();
@@ -106,19 +106,21 @@ class Modal extends Component {
 
   renderChildren () {
     return React.cloneElement(
-      this.props.children,
-      {closeModal: this.close.bind(this)}
+        this.props.children,
+        {closeModal: this.close.bind(this)}
     );
   }
 
   render () {
     return (
-    	<View style={[styles.modalWrapper, this.state.modalWrapper]}>
-        <View style={[styles.modalUnderlay, this.state.modalUnderlay]}></View>
-        <View style={[styles.modal, this.state.modal, this.props.modalStyle]}>
-          {this.renderChildren()}
+        <View style={[styles.modalWrapper, this.state.modalWrapper]}>
+          <TouchableWithoutFeedback onPress={this.props.closeOnTouch === true ? this.close.bind(this) : null}>
+            <View style={[styles.modalUnderlay, this.state.modalUnderlay]}></View>
+          </TouchableWithoutFeedback>
+            <View style={[styles.modal, this.state.modal, this.props.modalStyle]}>
+              {this.renderChildren()}
+            </View>
         </View>
-    	</View>
     );
   }
 };

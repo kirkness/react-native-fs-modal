@@ -43,6 +43,8 @@ hideModal () {
 
   // Hide/show UIStatusBar (defaults to true)
   hideStatusBar={true}
+  // close modal when touch underlay
+  closeOnTouch={true}
   >
 
   // Your modal's content
