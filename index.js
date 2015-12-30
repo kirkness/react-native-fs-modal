@@ -5,12 +5,12 @@ var deviceScreen = require('Dimensions').get('window');
 var Tween = require('react-native-tween-animation');
 
 var {
-  StyleSheet,
-  View,
-  Component,
-  TouchableWithoutFeedback,
-} = React;
-import utils from './urils';
+    StyleSheet,
+    View,
+    Component,
+    TouchableWithoutFeedback,
+    } = React;
+import utils from './utils';
 
 class Modal extends Component {
 
@@ -62,10 +62,10 @@ class Modal extends Component {
         top: 20,
       },
       duration: (this.props.hasOwnProperty('duration')) ? (
-        this.props.duration
+          this.props.duration
       ) : 500,
       tween: (this.props.hasOwnProperty('tween')) ? (
-        this.props.tween
+          this.props.tween
       ) : 'easeOutBack',
       frame: (tweenFrame) => this.setState({
         modal: tweenFrame
@@ -106,19 +106,19 @@ class Modal extends Component {
 
   renderChildren () {
     return React.cloneElement(
-      this.props.children,
-      {closeModal: this.close.bind(this)}
+        this.props.children,
+        {closeModal: this.close.bind(this)}
     );
   }
 
   render () {
     return (
-    	<View style={[styles.modalWrapper, this.state.modalWrapper]}>
-        <View style={[styles.modalUnderlay, this.state.modalUnderlay]}></View>
-        <View style={[styles.modal, this.state.modal, this.props.modalStyle]}>
-          {this.renderChildren()}
+        <View style={[styles.modalWrapper, this.state.modalWrapper]}>
+          <View style={[styles.modalUnderlay, this.state.modalUnderlay]}></View>
+          <View style={[styles.modal, this.state.modal, this.props.modalStyle]}>
+            {this.renderChildren()}
+          </View>
         </View>
-    	</View>
     );
   }
 };
