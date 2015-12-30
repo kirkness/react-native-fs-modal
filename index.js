@@ -114,10 +114,12 @@ class Modal extends Component {
   render () {
     return (
         <View style={[styles.modalWrapper, this.state.modalWrapper]}>
-          <View style={[styles.modalUnderlay, this.state.modalUnderlay]}></View>
-          <View style={[styles.modal, this.state.modal, this.props.modalStyle]}>
-            {this.renderChildren()}
-          </View>
+          <TouchableWithoutFeedback onPress={this.props.closeOnTouch === true ? this.close.bind(this) : null}>
+            <View style={[styles.modalUnderlay, this.state.modalUnderlay]}></View>
+          </TouchableWithoutFeedback>
+            <View style={[styles.modal, this.state.modal, this.props.modalStyle]}>
+              {this.renderChildren()}
+            </View>
         </View>
     );
   }
